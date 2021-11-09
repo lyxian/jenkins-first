@@ -5,9 +5,9 @@ pipeline {
 
     stages {
 
-        stage('first') {
+        stage('Verify Branch') {
             steps {
-                echo "My first build"
+                echo "$GIT_BRANCH"
             }
         }
     }
