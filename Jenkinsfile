@@ -15,7 +15,7 @@ pipeline {
               script {
                  sh '''
                   x="a\naa\naa\nab\nbb"
-                  echo -e $x | grep -w "aa\|aaa"
+                  echo -e $x | grep -w "aa\\|aaa"
                  '''
               }
            }
