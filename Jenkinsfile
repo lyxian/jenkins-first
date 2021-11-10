@@ -14,8 +14,8 @@ pipeline {
            steps {
               script {
                  sh '''
-                  x="a\naa\naa\nab\nbb\n"
-                  echo -e $x | grep -w "aa|aaa"
+                  x="a\naa\naa\nab\nbb"
+                  echo -e $x | grep -w "aa\|aaa"
                  '''
               }
            }
