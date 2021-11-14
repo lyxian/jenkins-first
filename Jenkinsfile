@@ -8,6 +8,7 @@ pipeline {
         stage('first') {
             steps {
                 echo "My first build"
+                sh "echo `env`"
             }
         }
         stage('test') {
