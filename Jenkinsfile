@@ -19,6 +19,7 @@ pipeline {
                   cat tmp.txt
                   > tmp.txt
                   cat tmp.txt
+                  echo "d\ne" > tmp.txt
                  '''
               }
            }
