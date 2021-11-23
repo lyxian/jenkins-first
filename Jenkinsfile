@@ -15,7 +15,10 @@ pipeline {
            steps {
               script {
                  sh '''
-                  echo -e "a\naa\naaa\nb\nbb" | grep -w "aa\\|aaa"
+                  ls
+                  cat tmp.txt
+                  > tmp.txt
+                  cat tmp.txt
                  '''
               }
            }
