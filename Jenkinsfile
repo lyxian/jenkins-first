@@ -16,11 +16,11 @@ pipeline {
               script {
                  sh '''
                   ls
-                  cat tmp.txt
-                  > tmp.txt
-                  cat tmp.txt
-                  echo "d\ne" > tmp.txt
-                  cat tmp.txt
+                  echo "---1---"
+                  changes=`echo $(cat tmp.txt) | sed 's/ /\\\\|/gp'`
+                  echo `grep -v "$changes" tmp1.txt`
+                  echo "---2---"
+                  echo `grep -v "echo $(cat tmp.txt) | sed 's/ /\\\\|/gp'" tmp1.txt`
                  '''
               }
            }
