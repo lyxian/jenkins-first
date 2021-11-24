@@ -17,7 +17,7 @@ pipeline {
                  sh '''
                   ls
                   echo "---1---"
-                  changes=`echo $(cat tmp.txt) | sed 's/ /\\\|/gp'`
+                  changes=`echo $(cat tmp.txt) | sed 's/ /\\|/gp'`
                   echo `grep -v "$changes" tmp1.txt`
                   echo "---2---"
                   echo `grep -v $(echo $(cat tmp.txt) | sed 's/ /\\\\|/gp') tmp1.txt`
