@@ -39,12 +39,11 @@ pipeline {
                         echo "File Saved"
                     } 
                     catch (BAD_CHECKOUT) {
-                        echo "${BAD_CHECKOUT}"
-                        // echo "$BAD_CHECKOUT.hudson.AbortException"
-                        BAD_CHECKOUT.each { println "Hex Code: $it.key = Color Name: $it.value" }
+                        // echo "${BAD_CHECKOUT}"
+                        writeFile file: 'ERROR.txt', text: "$BAD_CHECKOUT"
                         sh '''
-                        echo "${BRANCH_TEST} does not exist: ERROR=${BAD_CHECKOUT.hudson.AbortException}"
-                        echo "${BRANCH_TEST} does not exist: ERROR=${BAD_CHECKOUT.hudson.AbortException}" > ERROR.txt
+                        // echo "${BRANCH_TEST} does not exist: ERROR=${BAD_CHECKOUT.hudson.AbortException}"
+                        // echo "${BRANCH_TEST} does not exist: ERROR=${BAD_CHECKOUT.hudson.AbortException}" > ERROR.txt
                         exit 1
                         '''
                         // branchExists = ""
