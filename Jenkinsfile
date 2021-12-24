@@ -42,15 +42,15 @@ pipeline {
                         branchExists = ""
                         echo "${BRANCH_TEST} does not exist: ${err}"
                     } 
-                    finally {
-                        if (branchExists) {
-                            echo "YES"
-                        }
-                        else {
-                            sh 'exit 1'
-                            // currentBuild.result = 'FAILED'
-                        }
-                    }
+                    echo "HELLO, IM STILL HERE."
+                    // finally {
+                    //     if (branchExists) {
+                    //         echo "YES"
+                    //     }
+                    //     else {
+                    //         sh 'exit 1'
+                    //     }
+                    // }
                 }
             }
         }
