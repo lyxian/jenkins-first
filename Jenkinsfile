@@ -35,6 +35,8 @@ pipeline {
                         gitInfo = git branch: BRANCH_TEST, 
                         url: 'https://github.com/lyxian/jenkins-first'
                         // echo "$gitInfo"
+                        writeFile file: 'tmp', text: "$gitInfo"
+                        echo "File Saved"
                     } 
                     catch (err) {
                         branchExists = ""
