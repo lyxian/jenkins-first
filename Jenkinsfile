@@ -27,8 +27,8 @@ pipeline {
         }
         stage('git_checkout'){
             steps {
-                sh 'echo ${params.BRANCH}'
-                git branch: params.BRANCH, url: 'https://github.com/lyxian/jenkins-first.git'
+                sh 'echo ${BRANCH_TEST}'
+                git branch: ${BRANCH_TEST}, url: 'https://github.com/lyxian/jenkins-first.git'
             }
         }
         stage('check_minus') {
