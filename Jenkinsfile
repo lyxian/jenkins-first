@@ -1,6 +1,6 @@
 #!groovy
 
-def branchExists = True
+def branchExists = "True"
 
 pipeline {
     agent any
@@ -45,7 +45,7 @@ pipeline {
                         echo "$gitInfo"
                     } 
                     catch (err) {
-                        branchExists = False
+                        branchExists = ""
                         echo "${BRANCH_TEST} does not exist: ${err}"
                     } 
                     finally {
