@@ -41,9 +41,9 @@ pipeline {
                         gitInfo = git branch: BRANCH_TEST, 
                         url: 'https://github.com/lyxian/jenkins-lib-test'
                     } 
-                    catch {
-                        branchExist = False
-                        echo "${BRANCH_TEST} does not exists"
+                    catch (err) {
+                        def branchExist = False
+                        echo "${BRANCH_TEST} does not exist: ${err}"
                     } 
                     finally {
                         if (branchExist == False) {
