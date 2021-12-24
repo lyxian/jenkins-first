@@ -39,7 +39,7 @@ pipeline {
                         echo "File Saved"
                     } 
                     catch (BAD_CHECKOUT) {
-                        ERR_MSG = BAD_CHECKOUT
+                        env.ERR_MSG = BAD_CHECKOUT
                         // echo "${BAD_CHECKOUT}"
                         writeFile file: 'ERROR.txt', text: "$BAD_CHECKOUT"
                         sh '''
