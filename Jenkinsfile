@@ -38,7 +38,8 @@ pipeline {
             steps {
                 script{
                     gitInfo = git branch: BRANCH_TEST, url: 'https://github.com/lyxian/jenkins-lib-test'
-                    echo "$gitInfo,$gitInfo.GIT_COMMIT,$gitInfo.GIT_URL,$gitInfo.GIT_BRANCH"
+                    echo "$gitInfo"
+                    echo "$gitInfo.GIT_COMMIT,$gitInfo.GIT_URL,$gitInfo.GIT_BRANCH"
                 }
             }
         }
