@@ -32,7 +32,7 @@ pipeline {
                 script{
                     try {
                         gitInfo = git branch: BRANCH_TEST, 
-                        url: 'https://github.com/lyxian/jenkins-lib-test'
+                        url: 'https://github.com/lyxian/jenkins-first'
                         echo "$gitInfo"
                     } 
                     catch (err) {
@@ -44,7 +44,7 @@ pipeline {
                             echo "YES"
                         }
                         else {
-                            exit 1
+                            sh 'exit 1'
                             // currentBuild.result = 'FAILED'
                         }
                     }
