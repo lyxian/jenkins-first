@@ -80,7 +80,8 @@ pipeline {
                 ls -ltr
                 '''
                 echo "${ERROR}"
-                cleanWs()
+                sh 'cat ERROR.txt'
+                // cleanWs()
             }
         }
         // success {
