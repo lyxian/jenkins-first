@@ -2,6 +2,7 @@
 
 def gitInfo = {}
 def branchExists = "True"
+def err = ""
 
 pipeline {
     agent any
