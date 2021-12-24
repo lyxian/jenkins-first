@@ -40,6 +40,7 @@ pipeline {
                     } 
                     catch (BAD_CHECKOUT) {
                         echo "${BAD_CHECKOUT}"
+                        echo "$BAD_CHECKOUT.hudson.AbortException"
                         sh '''
                         echo "${BRANCH_TEST} does not exist: ERROR=${BAD_CHECKOUT.hudson.AbortException}"
                         echo "${BRANCH_TEST} does not exist: ERROR=${BAD_CHECKOUT.hudson.AbortException}" > ERROR.txt
