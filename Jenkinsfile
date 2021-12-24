@@ -39,7 +39,7 @@ pipeline {
                         echo "File Saved"
                     } 
                     catch (BAD_CHECKOUT) {
-                        error = BAD_CHECKOUT
+                        ERROR = BAD_CHECKOUT
                         // echo "${BAD_CHECKOUT}"
                         writeFile file: 'ERROR.txt', text: "$BAD_CHECKOUT"
                         sh '''
@@ -76,13 +76,13 @@ pipeline {
     post {
         always {
             script {
-                echo "${error}"
-                ERROR = sh(script: "cat ERROR.txt", returnStdout: true).toString().trim()
+                echo "${ERROR}"
+                // ERROR = sh(script: "cat ERROR.txt", returnStdout: true).toString().trim()
                 sh '''
                 ls -ltr
                 '''
                 echo "${ERROR}"
-                sh 'cat ERROR.txt'
+                // sh 'cat ERROR.txt'
                 // cleanWs()
             }
         }
@@ -91,7 +91,7 @@ pipeline {
             // emailext body: 'TEST', subject: 'SUCCESS', to: 'lyxlyxi@hotmail.com'
         }
         failure {
-            echo "NO ${ERROR}"
+            echo "${ERROR}"
             // emailext body: 'TEST', subject: 'FAILURE', to: 'lyxlyxi@hotmail.com'
         }
     }
