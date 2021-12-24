@@ -37,8 +37,8 @@ pipeline {
         stage('git_checkout'){
             steps {
                 script{
-                    gitInfo = git branch: "master", url: 'https://github.com/lyxian/jenkins-lib-test'
-                    sh 'echo $gitInfo'
+                    gitInfo = git branch: BRANCH_TEST, url: 'https://github.com/lyxian/jenkins-lib-test'
+                    echo "$gitInfo,$gitInfo.GIT_COMMIT,$gitInfo.GIT_URL,$gitInfo.GIT_BRANCH"
                 }
             }
         }
