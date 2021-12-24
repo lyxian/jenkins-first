@@ -56,6 +56,7 @@ pipeline {
                             currentBuild.result = 'FAILED'
                         }
                     }
+                    echo "$currentBuild"
                 }
             }
         }
