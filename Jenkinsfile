@@ -78,7 +78,7 @@ pipeline {
             sh '''
             ls -ltr
             '''
-            echo ERROR
+            echo "${ERROR}"
             cleanWs()
         }
         // success {
