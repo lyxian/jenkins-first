@@ -42,7 +42,7 @@ pipeline {
                         url: 'https://github.com/lyxian/jenkins-lib-test'
                     } 
                     catch (err) {
-                        def branchExist = False
+                        branchExist = False
                         echo "${BRANCH_TEST} does not exist: ${err}"
                     } 
                     finally {
