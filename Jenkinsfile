@@ -53,7 +53,7 @@ pipeline {
                             echo "YES"
                         }
                         else {
-                            echo "NO"
+                            currentBuild.result = 'FAILED'
                         }
                     }
                 }
