@@ -74,7 +74,9 @@ pipeline {
     }
     post {
         always {
-            ERROR = sh(script: "cat ERROR.txt", returnStdout: true).toString().trim()
+            script {
+                ERROR = sh(script: "cat ERROR.txt", returnStdout: true).toString().trim()
+            }
             sh '''
             ls -ltr
             '''
