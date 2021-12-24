@@ -10,7 +10,6 @@ pipeline {
 
         stage('first') {
             steps {
-                cleanWs()
                 echo "My first build"
                 sh "echo `env`"
             }
