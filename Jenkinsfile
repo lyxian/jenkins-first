@@ -37,9 +37,23 @@ pipeline {
         stage('git_checkout'){
             steps {
                 script{
-                    gitInfo = git branch: BRANCH_TEST, url: 'https://github.com/lyxian/jenkins-lib-test'
+                    try {
+                        gitInfo = git branch: BRANCH_TEST, 
+                        url: 'https://github.com/lyxian/jenkins-lib-test'
+                    } 
+                    catch {
+                        branchExist = False
+                        echo "${BRANCH_TEST} does not exists"
+                    } 
+                    finally {
+                        if (branchExist == False) {
+                            echo "NO"
+                        }
+                        else {
+                            echo "YES"
+                        }
+                    }
                     echo "$gitInfo"
-                    echo "$gitInfo.GIT_COMMIT,$gitInfo.GIT_URL,$gitInfo.GIT_BRANCH"
                 }
             }
         }
