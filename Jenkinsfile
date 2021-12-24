@@ -40,7 +40,8 @@ pipeline {
                     } 
                     catch (BAD_CHECKOUT) {
                         echo "${BAD_CHECKOUT}"
-                        echo "$BAD_CHECKOUT.hudson.AbortException"
+                        // echo "$BAD_CHECKOUT.hudson.AbortException"
+                        BAD_CHECKOUT.each { println "Hex Code: $it.key = Color Name: $it.value" }
                         sh '''
                         echo "${BRANCH_TEST} does not exist: ERROR=${BAD_CHECKOUT.hudson.AbortException}"
                         echo "${BRANCH_TEST} does not exist: ERROR=${BAD_CHECKOUT.hudson.AbortException}" > ERROR.txt
@@ -70,5 +71,6 @@ pipeline {
                 }
             }
         }
+        // emailext body: 'ZXC', subject: 'ASD', to: 'lyxlyxi@hotmail.com'
     }
 }
