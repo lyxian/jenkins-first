@@ -33,13 +33,14 @@ pipeline {
                     try {
                         gitInfo = git branch: BRANCH_TEST, 
                         url: 'https://github.com/lyxian/jenkins-first'
-                        echo "$gitInfo"
+                        // echo "$gitInfo"
                     } 
                     catch (err) {
                         branchExists = ""
                         echo "${BRANCH_TEST} does not exist: ${err}"
                     } 
                     finally {
+                        echo "$gitInfo"
                         if (branchExists) {
                             echo "YES"
                         }
