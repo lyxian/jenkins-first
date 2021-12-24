@@ -1,5 +1,7 @@
 #!groovy
 
+def branchExists = True
+
 pipeline {
     agent any
 
@@ -40,19 +42,20 @@ pipeline {
                     try {
                         gitInfo = git branch: BRANCH_TEST, 
                         url: 'https://github.com/lyxian/jenkins-lib-test'
+                        echo "$gitInfo"
                     } 
                     catch (err) {
+                        branchExists = False
                         echo "${BRANCH_TEST} does not exist: ${err}"
                     } 
-                    // finally {
-                    //     if (branchExist == False) {
-                    //         echo "NO"
-                    //     }
-                    //     else {
-                    //         echo "YES"
-                    //     }
-                    // }
-                    echo "$gitInfo"
+                    finally {
+                        if (branchExists) {
+                            echo "YES"
+                        }
+                        else {
+                            echo "NO"
+                        }
+                    }
                 }
             }
         }
