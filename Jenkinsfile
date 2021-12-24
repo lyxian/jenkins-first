@@ -41,7 +41,6 @@ pipeline {
                         echo "${BRANCH_TEST} does not exist: ${err}"
                     } 
                     finally {
-                        echo "$gitInfo"
                         if (branchExists) {
                             echo "YES"
                         }
@@ -56,6 +55,7 @@ pipeline {
         stage('check_minus') {
             steps {
                 script {
+                    echo "$gitInfo"
                     sh '''
                     grep -n "[-=#]\\*/$" check.txt
                     '''
