@@ -74,10 +74,11 @@ pipeline {
     }
     post {
         always {
+            ERROR = sh(script: "cat ERROR.txt", returnStdout: true).toString().trim()
             sh '''
             ls -ltr
-            cat ERROR.txt
             '''
+            echo ${ERROR}
             cleanWs()
         }
         // success {
