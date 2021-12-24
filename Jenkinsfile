@@ -76,12 +76,12 @@ pipeline {
         always {
             script {
                 ERROR = sh(script: "cat ERROR.txt", returnStdout: true).toString().trim()
+                sh '''
+                ls -ltr
+                '''
+                echo "${ERROR}"
+                cleanWs()
             }
-            sh '''
-            ls -ltr
-            '''
-            echo "${ERROR}"
-            cleanWs()
         }
         // success {
         //     emailext body: 'TEST', subject: 'SUCCESS', to: 'lyxlyxi@hotmail.com'
