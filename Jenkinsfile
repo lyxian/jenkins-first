@@ -45,6 +45,7 @@ pipeline {
                             echo "YES"
                         }
                         else {
+                            echo "$gitInfo"
                             sh 'exit 1'
                             // currentBuild.result = 'FAILED'
                         }
