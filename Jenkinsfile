@@ -44,6 +44,7 @@ pipeline {
                         sh '''
                         echo "${BRANCH_TEST} does not exist: ${BAD_CHECKOUT}"
                         echo "${BRANCH_TEST} does not exist: ${BAD_CHECKOUT}" > ERROR.txt
+                        exit 1
                         '''
                         // branchExists = ""
                         // echo "${BRANCH_TEST} does not exist: ${err}"
@@ -63,7 +64,6 @@ pipeline {
         stage('check_minus') {
             steps {
                 script {
-                    echo "$gitInfo"
                     sh '''
                     grep -n "[-=#]\\*/$" check.txt
                     '''
