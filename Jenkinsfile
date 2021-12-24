@@ -38,10 +38,12 @@ pipeline {
                         writeFile file: 'tmp', text: "$gitInfo"
                         echo "File Saved"
                     } 
-                    catch (err) {
+                    catch (BAD_CHECKOUT) {
+                        echo "${BAD_CHECKOUT}"
+                        // err = echo "{BAD_CHECKOUT}"
                         sh '''
-                        echo "${BRANCH_TEST} does not exist: ${err}"
-                        echo "${BRANCH_TEST} does not exist: ${err}" > ERROR.txt
+                        echo "${BRANCH_TEST} does not exist: ${BAD_CHECKOUT}"
+                        echo "${BRANCH_TEST} does not exist: ${BAD_CHECKOUT}" > ERROR.txt
                         '''
                         // branchExists = ""
                         // echo "${BRANCH_TEST} does not exist: ${err}"
