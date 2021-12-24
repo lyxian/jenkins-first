@@ -72,4 +72,18 @@ pipeline {
         }
         // emailext body: 'ZXC', subject: 'ASD', to: 'lyxlyxi@hotmail.com'
     }
+    post {
+        always {
+            sh '''
+            cat ERROR.txt
+            '''
+            cleanWs()
+        }
+        success {
+            emailext body: 'TEST', subject: 'SUCCESS', to: 'lyxlyxi@hotmail.com'
+        }
+        failure {
+            emailext body: 'TEST', subject: 'FAILURE', to: 'lyxlyxi@hotmail.com'
+        }
+    }
 }
