@@ -2,7 +2,6 @@
 
 def gitInfo = {}
 def branchExists = "True"
-def err = ""
 
 pipeline {
     agent any
@@ -41,10 +40,9 @@ pipeline {
                     } 
                     catch (BAD_CHECKOUT) {
                         echo "${BAD_CHECKOUT}"
-                        err = echo "{$BAD_CHECKOUT}"
                         sh '''
-                        echo "${BRANCH_TEST} does not exist: ERROR=${err}"
-                        echo "${BRANCH_TEST} does not exist: ERROR=${err}" > ERROR.txt
+                        echo "${BRANCH_TEST} does not exist: ERROR=${BAD_CHECKOUT.hudson.AbortException}"
+                        echo "${BRANCH_TEST} does not exist: ERROR=${BAD_CHECKOUT.hudson.AbortException}" > ERROR.txt
                         exit 1
                         '''
                         // branchExists = ""
