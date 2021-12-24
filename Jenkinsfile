@@ -25,12 +25,6 @@ pipeline {
               }
            }
         }
-        stage('git_checkout'){
-            steps {
-                sh 'echo ${BRANCH_TEST}'
-                git branch: BRANCH_TEST, url: 'https://github.com/lyxian/jenkins-first.git'
-            }
-        }
         stage('check_minus') {
             steps {
                 script {
@@ -38,6 +32,12 @@ pipeline {
                     grep -n "[-=#]\\*/$" check.txt
                     '''
                 }
+            }
+        }
+        stage('git_checkout'){
+            steps {
+                gitInfo = git branch: master, url: 'https://github.com/lyxian/jenkins-lib-test'
+                sh 'echo $gitInfo'
             }
         }
     }
