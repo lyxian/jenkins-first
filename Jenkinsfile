@@ -27,15 +27,6 @@ pipeline {
               }
            }
         }
-        stage('check_minus') {
-            steps {
-                script {
-                    sh '''
-                    grep -n "[-=#]\\*/$" check.txt
-                    '''
-                }
-            }
-        }
         stage('git_checkout'){
             steps {
                 script{
@@ -56,7 +47,15 @@ pipeline {
                             currentBuild.result = 'FAILED'
                         }
                     }
-                    echo "$currentBuild"
+                }
+            }
+        }
+        stage('check_minus') {
+            steps {
+                script {
+                    sh '''
+                    grep -n "[-=#]\\*/$" check.txt
+                    '''
                 }
             }
         }
