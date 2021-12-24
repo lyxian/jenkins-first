@@ -44,7 +44,8 @@ pipeline {
                             echo "YES"
                         }
                         else {
-                            currentBuild.result = 'FAILED'
+                            exit 1
+                            // currentBuild.result = 'FAILED'
                         }
                     }
                 }
