@@ -40,7 +40,7 @@ pipeline {
                     } 
                     catch (BAD_CHECKOUT) {
                         echo "${BAD_CHECKOUT}"
-                        err = echo "{BAD_CHECKOUT}"
+                        err = echo "{$BAD_CHECKOUT}"
                         sh '''
                         echo "${BRANCH_TEST} does not exist: ERROR=${err}"
                         echo "${BRANCH_TEST} does not exist: ERROR=${err}" > ERROR.txt
