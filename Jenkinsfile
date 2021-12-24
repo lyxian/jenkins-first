@@ -39,6 +39,7 @@ pipeline {
                         echo "File Saved"
                     } 
                     catch (BAD_CHECKOUT) {
+                        error = BAD_CHECKOUT
                         // echo "${BAD_CHECKOUT}"
                         writeFile file: 'ERROR.txt', text: "$BAD_CHECKOUT"
                         sh '''
@@ -75,6 +76,7 @@ pipeline {
     post {
         always {
             script {
+                echo $error
                 ERROR = sh(script: "cat ERROR.txt", returnStdout: true).toString().trim()
                 sh '''
                 ls -ltr
