@@ -39,10 +39,14 @@ pipeline {
                         echo "File Saved"
                     } 
                     catch (err) {
-                        branchExists = ""
+                        sh '''
                         echo "${BRANCH_TEST} does not exist: ${err}"
+                        echo "${BRANCH_TEST} does not exist: ${err}" > ERROR.txt
+                        '''
+                        // branchExists = ""
+                        // echo "${BRANCH_TEST} does not exist: ${err}"
                     } 
-                    echo "HELLO, IM STILL HERE."
+                    echo "HELLO, IM STILL HERE. IF YOU PASS"
                     // finally {
                     //     if (branchExists) {
                     //         echo "YES"
