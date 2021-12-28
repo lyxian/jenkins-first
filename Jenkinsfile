@@ -41,17 +41,17 @@ pipeline {
                     catch (BAD_CHECKOUT) {
                         // env.ERR_MSG = BAD_CHECKOUT
                         // echo "${BAD_CHECKOUT}"
-                        echo "${BRANCH_TEST} does not exist: ERROR=${BAD_CHECKOUT}"
-                        writeFile file: 'ERROR.txt', text: "${BRANCH_TEST} does not exist: ERROR=${BAD_CHECKOUT}"
+                        echo "${BRANCH_TEST} does not exist: ${BAD_CHECKOUT}"
+                        writeFile file: 'ERROR.txt', text: "${BRANCH_TEST} does not exist: ${BAD_CHECKOUT}"
                         // err = sh(script: "echo ${env.ERR_MSG} | cut -d ':' -f2-", returnStdout: true).toString().trim()
                         // sh '''
-                        // echo "${BRANCH_TEST} does not exist: ERROR=${BAD_CHECKOUT.hudson.AbortException}"
-                        // echo "${BRANCH_TEST} does not exist: ERROR=${BAD_CHECKOUT.hudson.AbortException}" > ERROR.txt
+                        // echo "${BRANCH_TEST} does not exist: ${BAD_CHECKOUT.hudson.AbortException}"
+                        // echo "${BRANCH_TEST} does not exist: ${BAD_CHECKOUT.hudson.AbortException}" > ERROR.txt
                         // echo "${ERR_MSG}"
                         // exit 1
                         // '''
                         ERROR = sh(script: "cat ERROR.txt", returnStdout: true).toString().trim()
-                        error "${BRANCH_TEST} does not exist: ERROR=${BAD_CHECKOUT}"
+                        error "${BRANCH_TEST} does not exist: ${BAD_CHECKOUT}"
                         // branchExists = ""
                         // echo "${BRANCH_TEST} does not exist: ${err}"
                     } 
