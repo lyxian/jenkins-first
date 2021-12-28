@@ -82,10 +82,10 @@ pipeline {
             script {
                 // echo "${ERR_MSG}"
                 // ERROR = sh(script: "cat ERROR.txt", returnStdout: true).toString().trim()
-                // sh '''
+                sh '''
                 ls -ltr
                 // echo `env`
-                // '''
+                '''
                 // echo "${ERROR}"
                 // sh 'cat ERROR.txt'
                 // cleanWs()
