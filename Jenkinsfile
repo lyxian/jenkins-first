@@ -102,9 +102,11 @@ pipeline {
         }
         failure {
             echo "$ERROR"
-            emailext subject: 'FAILURE', 
+            emailext (
+                subject: 'FAILURE', 
                 to: 'lyxlyxi@hotmail.com',
                 body: "ERROR=${ERROR}"
+            )
         }
     }
 }
