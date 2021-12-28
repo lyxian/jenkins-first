@@ -41,7 +41,7 @@ pipeline {
                     catch (BAD_CHECKOUT) {
                         writeFile file: 'ERROR.txt', text: "${BAD_CHECKOUT}"
                         sh '''
-                        echo -ne "${BRANCH_TEST} does not exist: `cat ERROR.txt | cut -d : -f2-`\nPLEASE REFER TO: https://www.google.com" > ERROR.txt
+                        echo -e "${BRANCH_TEST} does not exist: `cat ERROR.txt | cut -d : -f2-`\nPLEASE REFER TO: https://www.google.com" > ERROR.txt
                         '''
                         // env.ERR_MSG = BAD_CHECKOUT
                         // echo "${BAD_CHECKOUT}"
