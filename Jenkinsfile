@@ -39,6 +39,7 @@ pipeline {
                         echo "File Saved"
                     } 
                     catch (BAD_CHECKOUT) {
+                        error "$BAD_CHECKOUT"
                         writeFile file: 'ERROR.txt', text: "${BAD_CHECKOUT}"
                         sh '''
                         echo -n "${BRANCH_TEST} does not exist: `cat ERROR.txt | cut -d : -f2-`" > ERROR.txt
