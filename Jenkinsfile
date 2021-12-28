@@ -51,7 +51,7 @@ pipeline {
                         // exit 1
                         // '''
                         ERROR = sh(script: "cat ERROR.txt", returnStdout: true).toString().trim()
-                        error "${BRANCH_TEST} does not exist: ERROR=${BAD_CHECKOUT.hudson.AbortException}"
+                        error "${BRANCH_TEST} does not exist: ERROR=${BAD_CHECKOUT}"
                         // branchExists = ""
                         // echo "${BRANCH_TEST} does not exist: ${err}"
                     } 
