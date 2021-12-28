@@ -84,7 +84,7 @@ pipeline {
                 // ERROR = sh(script: "cat ERROR.txt", returnStdout: true).toString().trim()
                 sh '''
                 ls -ltr
-                // echo `env`
+                # echo `env`
                 '''
                 // echo "${ERROR}"
                 // sh 'cat ERROR.txt'
