@@ -43,13 +43,14 @@ pipeline {
                         // echo "${BAD_CHECKOUT}"
                         writeFile file: 'ERROR.txt', text: "$BAD_CHECKOUT"
                         // err = sh(script: "echo ${env.ERR_MSG} | cut -d ':' -f2-", returnStdout: true).toString().trim()
-                        // error "${err}"
                         sh '''
-                        // echo "${BRANCH_TEST} does not exist: ERROR=${BAD_CHECKOUT.hudson.AbortException}"
-                        // echo "${BRANCH_TEST} does not exist: ERROR=${BAD_CHECKOUT.hudson.AbortException}" > ERROR.txt
+                        echo "${BRANCH_TEST} does not exist: ERROR=${BAD_CHECKOUT.hudson.AbortException}"
+                        echo "${BRANCH_TEST} does not exist: ERROR=${BAD_CHECKOUT.hudson.AbortException}" > ERROR.txt
                         echo "${ERR_MSG}"
-                        exit 1
+                        // exit 1
                         '''
+                        ERROR = sh(script: "cat ERROR.txt", returnStdout: true).toString().trim()
+                        error "$ERROR"
                         // branchExists = ""
                         // echo "${BRANCH_TEST} does not exist: ${err}"
                     } 
@@ -81,10 +82,10 @@ pipeline {
             script {
                 // echo "${ERR_MSG}"
                 // ERROR = sh(script: "cat ERROR.txt", returnStdout: true).toString().trim()
-                sh '''
+                // sh '''
                 ls -ltr
-                echo `env`
-                '''
+                // echo `env`
+                // '''
                 // echo "${ERROR}"
                 // sh 'cat ERROR.txt'
                 // cleanWs()
@@ -95,7 +96,7 @@ pipeline {
             // emailext body: 'TEST', subject: 'SUCCESS', to: 'lyxlyxi@hotmail.com'
         }
         failure {
-            echo "${ERR_MSG}"
+            echo "$ERROR"
             // emailext body: 'TEST', subject: 'FAILURE', to: 'lyxlyxi@hotmail.com'
         }
     }
