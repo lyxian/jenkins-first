@@ -53,8 +53,9 @@ pipeline {
                         // echo "${ERR_MSG}"
                         // exit 1
                         // '''
-                        ERROR = sh(script: "cat ERROR.txt", returnStdout: true).toString().trim()
-                        error "$ERROR"
+                        // ERROR = sh(script: "cat ERROR.txt", returnStdout: true).toString().trim()
+                        ERR = readFile 'ERROR.txt'
+                        error "$ERR"
                         // branchExists = ""
                         // echo "${BRANCH_TEST} does not exist: ${err}"
                     } 
@@ -85,10 +86,10 @@ pipeline {
         always {
             script {
                 // echo "${ERR_MSG}"
-                // ERROR = sh(script: "cat ERROR.txt", returnStdout: true).toString().trim()
+                ERROR = sh(script: "cat ERROR.txt", returnStdout: true).toString().trim()
                 sh '''
                 ls -ltr
-                # echo `env`
+                echo `env`
                 '''
                 // echo "${ERROR}"
                 // sh 'cat ERROR.txt'
