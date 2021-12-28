@@ -42,12 +42,12 @@ pipeline {
                         env.ERR_MSG = BAD_CHECKOUT
                         // echo "${BAD_CHECKOUT}"
                         writeFile file: 'ERROR.txt', text: "$BAD_CHECKOUT"
-                        error "Error is : ${BAD_CHECKOUT}"
+                        // error "Error is : ${BAD_CHECKOUT}"
                         sh '''
                         echo "hello"
                         // echo "${BRANCH_TEST} does not exist: ERROR=${BAD_CHECKOUT.hudson.AbortException}"
                         // echo "${BRANCH_TEST} does not exist: ERROR=${BAD_CHECKOUT.hudson.AbortException}" > ERROR.txt
-                        exit 1
+                        exit 1`
                         '''
                         // branchExists = ""
                         // echo "${BRANCH_TEST} does not exist: ${err}"
