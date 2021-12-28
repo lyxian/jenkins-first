@@ -39,7 +39,6 @@ pipeline {
                         echo "File Saved"
                     } 
                     catch (BAD_CHECKOUT) {
-                        error "$BAD_CHECKOUT"
                         writeFile file: 'ERROR.txt', text: "${BAD_CHECKOUT}"
                         sh '''
                         echo -n "${BRANCH_TEST} does not exist: `cat ERROR.txt | cut -d : -f2-`" > ERROR.txt
@@ -55,8 +54,8 @@ pipeline {
                         // exit 1
                         // '''
                         // ERROR = sh(script: "cat ERROR.txt", returnStdout: true).toString().trim()
-                        ERR = readFile 'ERROR.txt'
-                        error "$ERR"
+                        BAD_CHECKOUT = readFile 'ERROR.txt'
+                        error "$BAD_CHECKOUT"
                         // branchExists = ""
                         // echo "${BRANCH_TEST} does not exist: ${err}"
                     } 
