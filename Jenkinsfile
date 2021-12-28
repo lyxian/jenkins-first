@@ -42,7 +42,7 @@ pipeline {
                         writeFile file: 'ERROR.txt', text: "${BAD_CHECKOUT}"
                         sh '''
                         echo -n """${BRANCH_TEST} does not exist: `cat ERROR.txt | cut -d : -f2-`
-                        PLEASE REFER TO: https://www.google.com""" > ERROR.txt
+                        PLEASE REFER TO: https://www.google.com""" | xargs > ERROR.txt
                         '''
                         // env.ERR_MSG = BAD_CHECKOUT
                         // echo "${BAD_CHECKOUT}"
