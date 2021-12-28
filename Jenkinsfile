@@ -47,7 +47,7 @@ pipeline {
                         sh '''
                         // echo "${BRANCH_TEST} does not exist: ERROR=${BAD_CHECKOUT.hudson.AbortException}"
                         // echo "${BRANCH_TEST} does not exist: ERROR=${BAD_CHECKOUT.hudson.AbortException}" > ERROR.txt
-                        echo ${env.ERR_MSG}
+                        echo ${ERR_MSG}
                         exit 1
                         '''
                         // branchExists = ""
