@@ -55,7 +55,7 @@ pipeline {
                         // '''
                         // ERROR = sh(script: "cat ERROR.txt", returnStdout: true).toString().trim()
                         BAD_CHECKOUT = readFile 'ERROR.txt'
-                        error "${BAD_CHECKOUT}".trim()
+                        error "${BAD_CHECKOUT}".toString().trim()
                         // branchExists = ""
                         // echo "${BRANCH_TEST} does not exist: ${err}"
                     } 
