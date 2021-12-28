@@ -54,8 +54,8 @@ pipeline {
                         // exit 1
                         // '''
                         // ERROR = sh(script: "cat ERROR.txt", returnStdout: true).toString().trim()
-                        ERR = readFile 'ERROR.txt'
-                        error "$ERR"
+                        BAD_CHECKOUT = readFile 'ERROR.txt'
+                        error "${BAD_CHECKOUT}"
                         // branchExists = ""
                         // echo "${BRANCH_TEST} does not exist: ${err}"
                     } 
@@ -102,11 +102,11 @@ pipeline {
         }
         failure {
             echo "$ERROR"
-            emailext (
-                subject: 'FAILURE', 
-                to: 'lyxlyxi@hotmail.com',
-                body: "ERROR=${ERROR}"
-            )
+            // emailext (
+            //     subject: 'FAILURE', 
+            //     to: 'lyxlyxi@hotmail.com',
+            //     body: "ERROR=${ERROR}"
+            // )
         }
     }
 }
