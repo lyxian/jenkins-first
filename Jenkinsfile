@@ -44,12 +44,12 @@ pipeline {
                         writeFile file: 'ERROR.txt', text: "$BAD_CHECKOUT"
                         err = sh(script: "echo ${BAD_CHECKOUT} | cut -d ':' -f2-", returnStdout: true).toString().trim()
                         error "${err}"
-                        sh '''
-                        // echo "${BRANCH_TEST} does not exist: ERROR=${BAD_CHECKOUT.hudson.AbortException}"
-                        // echo "${BRANCH_TEST} does not exist: ERROR=${BAD_CHECKOUT.hudson.AbortException}" > ERROR.txt
-                        echo "hello"
-                        exit 1
-                        '''
+                        // sh '''
+                        // // echo "${BRANCH_TEST} does not exist: ERROR=${BAD_CHECKOUT.hudson.AbortException}"
+                        // // echo "${BRANCH_TEST} does not exist: ERROR=${BAD_CHECKOUT.hudson.AbortException}" > ERROR.txt
+                        // echo "hello"
+                        // exit 1
+                        // '''
                         // branchExists = ""
                         // echo "${BRANCH_TEST} does not exist: ${err}"
                     } 
