@@ -39,6 +39,13 @@ pipeline {
                         echo "File Saved"
                     } 
                     catch (BAD_CHECKOUT) {
+                        environment {
+                            ERR = ${BAD_CHECKOUT}
+                        }
+                        sh '''
+                        echo "${BRANCH_TEST} does not exist: `echo ${ERR} | cut -d : -f2-`"
+                        '''
+                        exit 1
                         // env.ERR_MSG = BAD_CHECKOUT
                         // echo "${BAD_CHECKOUT}"
                         echo "${BRANCH_TEST} does not exist: `echo ${BAD_CHECKOUT} | cut -d : -f2-`"
