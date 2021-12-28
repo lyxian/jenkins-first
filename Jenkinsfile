@@ -39,17 +39,13 @@ pipeline {
                         echo "File Saved"
                     } 
                     catch (BAD_CHECKOUT) {
-                        environment {
-                            ERR = "$BAD_CHECKOUT"
-                        }
+                        writeFile file: 'ERROR.txt', text: "${BAD_CHECKOUT}"
                         sh '''
-                        echo "${BRANCH_TEST} does not exist: `echo ${ERR} | cut -d : -f2-`"
+                        echo "${BRANCH_TEST} does not exist: `cat ERROR.txt | cut -d : -f2-`" > ERROR.txt
                         '''
-                        exit 1
                         // env.ERR_MSG = BAD_CHECKOUT
                         // echo "${BAD_CHECKOUT}"
-                        echo "${BRANCH_TEST} does not exist: `echo ${BAD_CHECKOUT} | cut -d : -f2-`"
-                        writeFile file: 'ERROR.txt', text: "${BRANCH_TEST} does not exist: `echo ${BAD_CHECKOUT} | cut -d : -f2-`"
+                        // echo "${BRANCH_TEST} does not exist: `echo ${BAD_CHECKOUT} | cut -d : -f2-`"
                         // err = sh(script: "echo ${env.ERR_MSG} | cut -d ':' -f2-", returnStdout: true).toString().trim()
                         // sh '''
                         // echo "${BRANCH_TEST} does not exist: ${BAD_CHECKOUT.hudson.AbortException}"
@@ -58,7 +54,7 @@ pipeline {
                         // exit 1
                         // '''
                         ERROR = sh(script: "cat ERROR.txt", returnStdout: true).toString().trim()
-                        error "${BRANCH_TEST} does not exist: `echo ${BAD_CHECKOUT} | cut -d : -f2-`"
+                        error "$ERROR"
                         // branchExists = ""
                         // echo "${BRANCH_TEST} does not exist: ${err}"
                     } 
